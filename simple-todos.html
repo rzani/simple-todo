@@ -1,15 +1,21 @@
 <head>
-  <title>simple-todos</title>
+	<title>simple todos lists</title>
 </head>
 
 <body>
-  <h1>Caralho que foda</h1>
+	<div class="container">
+		<header>
+			<h1>Simple Todo</h1>
+		</header>
 
-  {{> hello}}
+		<ul>
+			{{#each tasks}}
+				{{> task}}
+			{{/each}}
+		</ul>
+	</div>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <button>2</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="task">
+	<li>{{text}}</li>
 </template>
