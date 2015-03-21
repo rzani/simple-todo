@@ -1,21 +1,71 @@
 <head>
-	<title>simple todos lists</title>
+	<title>Todo List</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-	<div class="container">
-		<header>
-			<h1>Simple Todo</h1>
-		</header>
 
-		<ul>
-			{{#each tasks}}
-				{{> task}}
-			{{/each}}
-		</ul>
+	{{>nav}}
+
+	<div class="container">
+		{{>insert}}
+
+		{{#each tasks}}
+			{{> task}}
+		{{/each}}
 	</div>
+
+	<footer class="page-footer grey lighten-3">
+		<div class="container">
+
+		</div>
+		<div class="footer-copyright">
+			<div class="container text-darken-4 grey-text">
+				© 2014 Copyright Rodrigo Zani
+				<a class="blue-text text-darken-3 right" href="https://github.com/rzani/simple-todo">Fork on GitHub</a>
+			</div>
+		</div>
+	</footer>
 </body>
 
+<!-- Navbar template -->
+<template name="nav">
+	<nav>
+		<div class="nav-wrapper light-blue accent-3">
+			<a href="#!" class="brand-logo">Todos</a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="sass.html"><i class="mdi-action-search"></i></a></li>
+				<li><a href="mobile.html"><i class="mdi-navigation-more-vert"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</template>
+
+<!-- list of tasks -->
 <template name="task">
-	<li>{{text}}</li>
+	<div class="card">
+		<div class="card-content {{#if checked}}grey lighten-4{{/if}}">
+			<span class="card-title activator grey-text text-darken-4">
+				<input type="checkbox" id="{{text}}" class="toggle-checked" checked="{{checked}}">
+				<label for="{{text}}">{{text}}</label>
+				<i class="mdi-navigation-more-vert right"></i>
+			</span>
+		</div>
+		<div class="card-reveal grey lighten-2">
+			<span class="card-title grey-text darken-4"><i class="mdi-navigation-close right"></i></span>
+			<button class="delete waves-effect waves-light btn deep-orange lighten-2"><i class="mdi-action-delete left"></i>Delete</button>
+		</div>
+	</div>
+</template>
+
+<!-- insert new tasks -->
+<template name="insert">
+	<form class="insert">
+		<div class="row">
+	      <div class="input-field col s12">
+	        <input id="new-task" name="text" type="text">
+	        <label for="email">Add task</label>
+	      </div>
+	    </div>
+	</form>
 </template>
